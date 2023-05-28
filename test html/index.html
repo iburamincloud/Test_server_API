@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div id = "team"></div>
+        <script>
+            fetch("http://127.0.0.1:3000/getTeam",{
+            })
+            .then((res) =>{
+                return res.json();
+            } )
+            .then((res) => {
+                const teamDiv = document.getElementById("team");
+                res.forEach((element) => {
+                    teamDiv.innerHTML += 
+                    `
+                    <div>
+                        fullName : ${element.fullName}
+                        job : ${element.job}
+                    </div>
+                    `;
+                });
+            })
+            .catch((err) => {
+                alert(err.message);
+                console.error(err);
+            })
+        </script>
+    </body>
+</html>
